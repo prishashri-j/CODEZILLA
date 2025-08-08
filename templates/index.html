@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Creative Language Translator</title>
+  <style>
+    body {
+      background: linear-gradient(45deg, #ff4e50, #f9d423);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px #000;
+    }
+
+    form {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    select, textarea, button {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      resize: vertical;
+    }
+
+    button {
+      background-color: #fff;
+      color: #ff4e50;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #f9d423;
+      color: #000;
+    }
+
+    .output {
+      margin-top: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 700px;
+      white-space: pre-wrap;
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Creative Language Translator</h1>
+  <form method="POST" action="/translate">
+    <label for="text">Enter your text:</label>
+    <textarea name="text" id="text" rows="5" required>{{ user_input or '' }}</textarea>
+
+    <label for="source_lang">From:</label>
+    <select name="source_lang" id="source_lang" required>
+      <option value="English" {% if source_lang == 'English' %}selected{% endif %}>English</option>
+      <option value="Spanish" {% if source_lang == 'Spanish' %}selected{% endif %}>Spanish</option>
+      <option value="French" {% if source_lang == 'French' %}selected{% endif %}>French</option>
+    </select>
+
+    <label for="target_lang">To:</label>
+    <select name="target_lang" id="target_lang" required>
+      <option value="English" {% if target_lang == 'English' %}selected{% endif %}>English</option>
+      <option value="Spanish" {% if target_lang == 'Spanish' %}selected{% endif %}>Spanish</option>
+      <option value="French" {% if target_lang == 'French' %}selected{% endif %}>French</option>
+    </select>
+
+    <label for="style">Choose Style:</label>
+    <select name="style" id="style" required>
+      <option value="Formal" {% if style == 'Formal' %}selected{% endif %}>Formal</option>
+      <option value="Casual" {% if style == 'Casual' %}selected{% endif %}>Casual</option>
+      <option value="Poetic" {% if style == 'Poetic' %}selected{% endif %}>Poetic</option>
+      <option value="Shakespearean" {% if style == 'Shakespearean' %}selected{% endif %}>Shakespearean</option>
+    </select>
+
+    <button type="submit">Translate</button>
+  </form>
+
+  {% if translated_text %}
+  <div class="output">
+    <h3>Translated Text:</h3>
+    <p>{{ translated_text }}</p>
+  </div>
+  {% endif %}
+</body>
+</html>
