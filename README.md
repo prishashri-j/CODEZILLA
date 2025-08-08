@@ -15,13 +15,13 @@ creative-translator/
 ├── templates/
 │    └── index.html        # Frontend UI
 
-3. Requirements
+1. Requirements
 Before running, ensure you have:
 Python 3.8+ installed
 pip package manager
 OpenRouter API key from: https://openrouter.ai
 
-5. How It Works
+2. How It Works
 User enters text in the input box.
 Selects:
 Source Language (e.g., English)
