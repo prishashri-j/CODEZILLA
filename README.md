@@ -31,4 +31,12 @@ Backend sends a request to OpenRouter API with style instructions.
 API returns translated + styled text.
 Output is displayed instantly in the browser.
 
+local host link : http://127.0.0.1:5000/translate
+
+
+
+
+https://github.com/user-attachments/assets/59af7ddf-eacd-4e67-9bba-e267e442ec90
+
+
 
